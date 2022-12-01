@@ -1,2 +1,7 @@
-﻿year-2021/rust/*/target
+﻿.idea
+
+year-2021/rust/*/target
 year-2021/rust/*/.idea
+
+year-2022/rust/*/target
+year-2022/rust/*/.idea
