@@ -5,3 +5,5 @@ year-2021/rust/*/.idea
 
 year-2022/rust/*/target
 year-2022/rust/*/.idea
+
+target
