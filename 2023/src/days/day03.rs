@@ -6,8 +6,6 @@ use std::rc::Rc;
 
 pub fn run(input: &str) -> i32 {
     let grid = Grid::new(input);
-    // println!("{:?}", grid);
-    // println!("{:?}", grid.adjacent());
     return grid.adjacent()
         .iter().map(|v| *v)
         .sum::<u32>() as i32;
@@ -15,8 +13,6 @@ pub fn run(input: &str) -> i32 {
 
 pub fn run2(input: &str) -> i32 {
     let grid = Grid::new(input);
-    println!("{:?}", grid);
-    println!("{:?}", grid.gears());
     return grid.gears()
         .iter().map(|v| *v)
         .sum::<u32>() as i32;

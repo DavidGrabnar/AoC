@@ -9,13 +9,18 @@ fn main() {
     // println!("Result: {}", days::day01::run(&input));
 
     // day2
-    let input = fs::read_to_string(Path::new("inputs\\day02-1.txt")).unwrap();
+    // let input = fs::read_to_string(Path::new("inputs\\day02-1.txt")).unwrap();
     // let input_1 = "12 red, 13 green, 14 blue";
     // println!("Result: {}", days::day02::run(&input, input_1));
     // println!("Result 2: {}", days::day02::run2(&input));
 
     // day3
-    let input = fs::read_to_string(Path::new("inputs\\day03-1.txt")).unwrap();
-    println!("Result: {}", days::day03::run(&input));
-    println!("Result 2: {}", days::day03::run2(&input));
+    // let input = fs::read_to_string(Path::new("inputs\\day03-1.txt")).unwrap();
+    // println!("Result: {}", days::day03::run(&input));
+    // println!("Result 2: {}", days::day03::run2(&input));
+
+    // day3
+    let input = fs::read_to_string(Path::new("inputs\\day04-1.txt")).unwrap();
+    println!("Result: {}", days::day04::run(&input));
+    println!("Result 2: {}", days::day04::run2(&input));
 }
