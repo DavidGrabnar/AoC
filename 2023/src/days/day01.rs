@@ -1,5 +1,4 @@
 use std::collections::HashMap;
-use std::error::Error;
 use regex::{Regex};
 
 pub fn run(input: &str) -> i32 {
