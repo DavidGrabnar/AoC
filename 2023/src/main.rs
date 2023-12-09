@@ -35,7 +35,12 @@ fn main() {
     // println!("Result 2: {}", days::day06::run2(&input)); // 36992486
 
     // day7
-    let input = fs::read_to_string(Path::new("inputs\\day07-1.txt")).unwrap();
+    // let input = fs::read_to_string(Path::new("inputs\\day07-1.txt")).unwrap();
     // println!("Result: {}", days::day07::run(&input)); // 250370104
-    println!("Result 2: {}", days::day07::run2(&input)); // 251735672
+    // println!("Result 2: {}", days::day07::run2(&input)); // 251735672
+
+    // day8
+    let input = fs::read_to_string(Path::new("inputs\\day08-1.txt")).unwrap();
+    // println!("Result: {}", days::day08::run(&input)); // 20513
+    println!("Result 2: {}", days::day08::run2(&input)); //
 }
