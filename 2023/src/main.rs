@@ -40,7 +40,12 @@ fn main() {
     // println!("Result 2: {}", days::day07::run2(&input)); // 251735672
 
     // day8
-    let input = fs::read_to_string(Path::new("inputs\\day08-1.txt")).unwrap();
+    // let input = fs::read_to_string(Path::new("inputs\\day08-1.txt")).unwrap();
     // println!("Result: {}", days::day08::run(&input)); // 20513
-    println!("Result 2: {}", days::day08::run2(&input)); //
+    // println!("Result 2: {}", days::day08::run2(&input)); // ???
+
+    // day9
+    let input = fs::read_to_string(Path::new("inputs\\day09-1.txt")).unwrap();
+    println!("Result: {}", days::day09::run(&input)); // 1485024777 too high
+    // println!("Result 2: {}", days::day09::run2(&input)); //
 }
