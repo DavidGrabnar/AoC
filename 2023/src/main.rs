@@ -27,7 +27,7 @@ fn main() {
     // day5
     // let input = fs::read_to_string(Path::new("inputs\\day05-1.txt")).unwrap();
     // println!("Result: {}", days::day05::run(&input)); // 484023871
-    // println!("Result 2: {}", days::day05::run2(&input)); // ???
+    // println!("Result 2: {}", days::day05::run2(&input)); // 46294175
 
     // day6
     // let input = fs::read_to_string(Path::new("inputs\\day06-1.txt")).unwrap();
@@ -40,7 +40,12 @@ fn main() {
     // println!("Result 2: {}", days::day07::run2(&input)); // 251735672
 
     // day8
-    let input = fs::read_to_string(Path::new("inputs\\day08-1.txt")).unwrap();
+    // let input = fs::read_to_string(Path::new("inputs\\day08-1.txt")).unwrap();
     // println!("Result: {}", days::day08::run(&input)); // 20513
-    println!("Result 2: {}", days::day08::run2(&input)); //
+    // println!("Result 2: {}", days::day08::run2(&input)); //
+
+    // day10
+    let input = fs::read_to_string(Path::new("inputs\\day10-1.txt")).unwrap();
+    // println!("Result: {}", days::day10::run(&input, 2)); // 9565386
+    println!("Result 2: {}", days::day10::run(&input, 1_000_000)); // 857986849428
 }
