@@ -44,8 +44,8 @@ fn main() {
     // println!("Result: {}", days::day08::run(&input)); // 20513
     // println!("Result 2: {}", days::day08::run2(&input)); //
 
-    // day10
+    // day11
     let input = fs::read_to_string(Path::new("inputs\\day10-1.txt")).unwrap();
     // println!("Result: {}", days::day10::run(&input, 2)); // 9565386
-    println!("Result 2: {}", days::day10::run(&input, 1_000_000)); // 857986849428
+    println!("Result 2: {}", days::day11::run(&input, 1_000_000)); // 857986849428
 }

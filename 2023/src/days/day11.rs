@@ -159,7 +159,7 @@ impl Grid {
 
 #[cfg(test)]
 mod tests {
-    use crate::days::day10::{Grid, run};
+    use crate::days::day11::{Grid, run};
 
     const INPUT_1: &str = r#"...#......
 .......#..
