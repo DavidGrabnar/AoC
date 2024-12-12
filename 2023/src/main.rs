@@ -55,7 +55,17 @@ fn main() {
     // println!("Result 2: {}", days::day11::run(&input, 1_000_000)); // 857986849428
 
     // day13
-    let input = fs::read_to_string(Path::new("inputs\\day13-1.txt")).unwrap();
-    println!("Result: {}", days::day13::run(&input)); // 33195
-    println!("Result 2: {}", days::day13::run2(&input)); // 40264 too high
+    // let input = fs::read_to_string(Path::new("inputs\\day13-1.txt")).unwrap();
+    // println!("Result: {}", days::day13::run(&input)); // 33195
+    // println!("Result 2: {}", days::day13::run2(&input)); // 40264 too high
+
+    // day14
+    // let input = fs::read_to_string(Path::new("inputs\\day14-1.txt")).unwrap();
+    // println!("Result: {}", days::day14::run(&input)); //
+    // println!("Result 2: {}", days::day14::run2(&input)); //
+
+    // day18
+    let input = fs::read_to_string(Path::new("inputs\\day18-1.txt")).unwrap();
+    println!("Result: {}", days::day18::run(&input)); // 87847 too high
+    // println!("Result 2: {}", days::day18::run2(&input)); //
 }

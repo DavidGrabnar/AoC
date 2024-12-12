@@ -1,9 +1,12 @@
-use std::fmt::{Display, Formatter, write};
-use std::panic::panic_any;
+use std::fmt::{Display, Formatter};
 use itertools::Itertools;
 
-pub fn run(input: &str) -> i32 {
-    0
+pub fn run(input: &str) -> u32 {
+    let mut outline = Plan::from(input).outline_trench();
+    println!("{}", outline);
+    outline.fill();
+    println!("{}", outline);
+    outline.area()
 }
 
 #[derive(Debug)]
@@ -47,7 +50,7 @@ impl Plan {
         let mut curr = (0i32, 0i32);
 
         self.0.iter().for_each(|step| {
-            let next: (i32, i32) = match step.0 {
+            let mut next: (i32, i32) = match step.0 {
                 Dir::Up => (curr.0, curr.1 - step.1 as i32),
                 Dir::Down => (curr.0, curr.1 + step.1 as i32),
                 Dir::Left => (curr.0 - step.1 as i32, curr.1),
@@ -55,13 +58,29 @@ impl Plan {
             };
 
             // resize
-            let diff_x = next.0 as i32 - size.0 as i32;
+            (next.0..0).for_each(|_| {
+                map.0.iter_mut().for_each(|row| row.insert(0, Cell::Terrain));
+            });
+
+            if next.0 < 0 {
+                curr.0 -= next.0;
+            }
+
+            let diff_x = next.0 - size.0;
             (0..=diff_x).for_each(|_| {
                 map.0.iter_mut().for_each(|row| row.push(Cell::Terrain));
             });
             size.0 = map.0.first().unwrap().len() as i32;
 
-            let diff_y = next.1 as i32 - size.1;
+            (next.1..0).for_each(|_| {
+                map.0.insert(0, vec![Cell::Terrain; size.0 as usize]);
+            });
+
+            if next.1 < 0 {
+                curr.1 -= next.1;
+            }
+
+            let diff_y = next.1 - size.1;
             (0..=diff_y).for_each(|_| {
                 map.0.push(vec![Cell::Terrain; size.0 as usize]);
             });
@@ -76,6 +95,7 @@ impl Plan {
                     Dir::Right => curr.0 += 1
                 };
 
+                println!("{:?} {:?}", step, curr);
                 map.0[curr.1 as usize][curr.0 as usize] = Cell::Trench;
             });
         });
@@ -116,34 +136,20 @@ impl Map {
         (0..self.0.len())
             .for_each(|y| {
                 // find start, end
-                let mut range: Option<(usize, Option<usize>)> = (0..self.0[0].len())
-                    .fold(None, |mut range, x| {
-                        if self.0[y][x] == Cell::Trench {
-                            if let Some((start, end)) = range {
-                                if end.is_none() {
-                                    // set end
-                                    Some((start, Some(x)))
-                                } else {
-                                    // already done
-                                    range
-                                }
-                            } else {
-                                // set start
-                                Some((x, None))
-                            }
-                        } else {
-                            // not a trench
-                            range
-                        }
-                    });
+                let start =
+                    (0..self.0[0].len())
+                        .find(|x| self.0[y][*x] == Cell::Trench);
 
-                if let Some((start, end)) = range {
+                if let Some(start) = start {
+                    let end = ((start + 1)..=(self.0[0].len() - 1)).rev()
+                        .find(|x| self.0[y][*x] == Cell::Trench);
+
                     if let Some(end) = end {
-                        ((start+1)..end).for_each(|x| {
+                        ((start + 1)..end).for_each(|x| {
                             self.0[y][x] = Cell::Trench
                         })
                     } else {
-                        panic!("incomplete range not expected {:?}", range)
+                        panic!("incomplete range not expected on row {} starting on {}", y, start)
                     }
                 } else {
                     // expect blank line
@@ -151,6 +157,14 @@ impl Map {
             });
 
         self
+    }
+
+    fn area(&self) -> u32 {
+        self.0.iter()
+            .map(|row|
+                row.iter().filter(|cell| **cell == Cell::Trench).count() as u32
+            )
+            .sum()
     }
 }
 
@@ -168,8 +182,7 @@ impl From<char> for Dir {
 
 #[cfg(test)]
 mod tests {
-    use crate::days::day01::run;
-    use crate::days::day18::Plan;
+    use crate::days::day18::{Plan, run};
 
     const INPUT_PLAN: &str = r#"R 6 (#70c710)
 D 5 (#0dc571)
@@ -221,6 +234,6 @@ U 2 (#7a21e3)"#;
 
     #[test]
     fn test_1() {
-        assert_eq!(run(INPUT_PLAN), 142);
+        assert_eq!(Plan::from(INPUT_PLAN).outline_trench().fill().area(), 62);
     }
 }
