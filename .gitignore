@@ -7,3 +7,4 @@ year-2022/rust/*/target
 year-2022/rust/*/.idea
 
 target
+/2024/inputs/
